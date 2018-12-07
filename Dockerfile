@@ -1,10 +1,8 @@
  
-FROM ubuntu:latest
+FROM ubuntu
 
-RUN apt-get install -y apache2
+RUN apt-get update --yes; apt-get install --yes apache2
 
 EXPOSE 80
 
-ENTRYPOINT ["apache2ctl"]
-
-CMD ["-DFOREGROUND"]
+CMD ["bash", "-c", "/etc/init.d/apache2 start; bash"]
