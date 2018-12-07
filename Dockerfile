@@ -1,8 +1,5 @@
- 
-FROM ubuntu
-
-RUN apt-get update --yes; apt-get install --yes apache2
-
-EXPOSE 80
-
-CMD ["bash", "-c", "/etc/init.d/apache2 start; bash"]
+FROM python:3.4-alpine
+ADD . /code
+WORKDIR /code
+RUN pip install -r requirements.txt
+CMD ["python", "app.py"]
